@@ -2,6 +2,7 @@ import React from 'react'
 import { Tabs } from 'antd'
 import CaseSearch from '../../../components/case-search'
 import WatchCase from '../../../components/watch-case'
+import OrganizationGuide from '../../../components/organization-guide'
 import './index.less'
 
 const { TabPane } = Tabs
@@ -67,6 +68,10 @@ class Content extends React.Component{
                 <div className="second-content">
                     <div className="watch-case">看案例</div>
                     <WatchCase />
+                </div>
+                <div className="third-content">
+                    <div className="organization-guide">机构指南</div>
+                    <OrganizationGuide />
                 </div>
             </div>
         )

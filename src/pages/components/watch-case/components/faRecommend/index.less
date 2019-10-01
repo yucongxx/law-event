@@ -1,0 +1,90 @@
+.recommend-case-wrap{
+    width:1000px;
+    min-height:500px;
+    background: #fff;
+
+    .recommend-case-content{
+        padding:0 20px;
+
+        .recommend-case{
+            display: flex;
+            justify-content: space-between;
+            border-bottom:1px solid #E5E5E5;
+
+            .case-left{
+                padding: 24px 0 20px;
+
+                .case-title{
+                    font-size: 18px;
+                    height: 35px;
+                    line-height: 35px;
+                    margin: 0;
+                    
+                    a{
+                        color: #222222;
+                    }
+
+                    &:hover{
+                        a{
+                            color:#2985ba;
+                        }
+                        
+                    }
+                }
+
+                .case-params{
+                    font-size: 13px;
+                    color: #999;
+                    height: 24px;
+                    line-height: 24px;
+                }
+
+                .case-keywords{
+                    font-size: 13px;
+                    color: #999;
+                    height: 24px;
+                    line-height: 24px;
+                }
+            }
+
+            .case-right{
+                // width: 160px;
+
+                .attribute-tag{
+                    display: inline-block;
+                    margin-left: 5px;
+                    width: 0;
+                    height: 0;
+                    border-top: 30px solid #359edb;
+                    border-right: 17.5px solid #359edb;
+                    border-bottom: 10px solid transparent;
+                    border-left: 17.5px solid #359edb;
+
+                    span{
+                        text-align: center;
+                        position: relative;
+                        min-width: 30px;
+                        display: block;
+                        font-size: 13px;
+                        color: white;
+                        top: -20px;
+                        left: -15px;
+                        font-weight: normal;
+                    }
+                }
+            }
+        }
+
+        .footer-change-btn{
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+
+            .ant-btn-primary{
+                width:100px;
+                height:40px;
+                background: #359edb;
+            }
+        }
+    }
+}
