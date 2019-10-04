@@ -7,6 +7,7 @@ import './index.less'
 
 class HomePage extends React.Component{
     render(){
+        // console.log(this.props)
         return(
             <div className="home-page">
                 <div className="home-header">
