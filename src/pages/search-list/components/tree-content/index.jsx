@@ -29,8 +29,6 @@ class TreeList extends React.Component {
             )
         }
 
-        console.log(dataList)
-
         return dataList
     }
 

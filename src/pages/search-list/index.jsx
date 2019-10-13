@@ -17,7 +17,8 @@ class SearchList extends React.Component{
             searchValue:'',
             searchResult:[],
             totalElementCount:0,
-            trfilterOptions:{}
+            trfilterOptions:{},
+            isLoading:true
         }
     }
 
@@ -46,7 +47,8 @@ class SearchList extends React.Component{
                     this.setState({
                         searchResult,
                         totalElementCount,
-                        filterOptions
+                        filterOptions,
+                        isLoading:false
                     })
                 }
 
@@ -62,8 +64,25 @@ class SearchList extends React.Component{
                     inputValue:searchValue,
                     fromIndex:params
                 }
-                this.reqSearch(searchData)
-                break;
+                this.setState({
+                    isLoading:true
+                },()=>{
+                    this.reqSearch(searchData)
+                })
+                
+                break
+            case 'contentListSearch':
+                console.log(params)
+                let contentListSearchData = {
+                    inputValue:params,
+                }
+                this.setState({
+                    isLoading:true
+                },()=>{
+                    this.reqSearch(contentListSearchData)
+                })
+                
+                break
                 default:
                 break
         }
@@ -71,13 +90,13 @@ class SearchList extends React.Component{
 
     render(){
         // console.log(this.props)
-        const { searchResult, totalElementCount, filterOptions } = this.state
+        const { searchResult, totalElementCount, filterOptions,isLoading } = this.state
 
         return(
             <div className="search-list-wrap">
-                <Spin spinning={isEmpty(searchResult)} tip="数据加载中，请稍后">
+                <Spin spinning={isLoading} tip="数据加载中，请稍后">
                     <div className="search-list-header">
-                        <ListHeader />
+                        <ListHeader onEvent={this.onEvent} />
                     </div>
                     <div className="search-list-content">
                         <TreeList filterOptions={filterOptions} />

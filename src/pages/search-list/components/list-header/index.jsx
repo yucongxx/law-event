@@ -7,12 +7,25 @@ const { Option } = Select;
 const { Search } = Input;
 
 class ListHeader extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            inputValue:''
+        }
+    }
+
+    contentSearch = (value) => {
+        const { onEvent } = this.props
+        onEvent('contentListSearch',value)
+    }
+
     render(){
+        
         // console.log(this.props)
         return(
             <div className="list-header">
                 <div className="header-logo">
-                    <a href="">
+                    <a href="javascript:void(0)">
                         <img src={headLogo}></img>
                     </a>
                 </div>
@@ -27,7 +40,7 @@ class ListHeader extends React.Component{
                     <Search
                         placeholder="请搜索输入内容"
                         enterButton="搜索"
-                        onSearch={value => console.log(value)}
+                        onSearch={(value) =>this.contentSearch(value)}
                     />
                 </div>
                 <div className="header-right">
