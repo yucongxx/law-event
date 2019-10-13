@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Button } from 'antd'
+import { Input, Button,message } from 'antd'
 import { withRouter } from 'react-router'
 import { searchQuery } from '../../../common/utils/http'
 import './index.less'
@@ -18,7 +18,12 @@ class CaseSearch extends React.Component {
 
     searchCase = () => {
         let { inputValue } = this.state
-        searchQuery(inputValue)
+        if(!inputValue) {
+            message.error('请输入查询内容')
+            return
+        }
+        this.props.history.push(`/search-list?inputValue=${inputValue}`)
+        // searchQuery(inputValue)
     }
 
     changeValue = (inputValue) => {
