@@ -1,11 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router'
-import { Spin } from 'antd'
+import { Spin, message } from 'antd'
 import { searchQuery } from '../../common/utils/http'
 import queryString from 'query-string'
 import ListHeader from './components/list-header'
 import ListContent from './components/list-content'
 import TreeList from './components/tree-content'
+import Footer from '../home/components/footer'
 import isEmpty from 'lodash/isEmpty'
 import './index.less'
 
@@ -53,10 +54,17 @@ class SearchList extends React.Component{
                 }
 
             }
+        }).catch(err => {
+            console.log('报错提示', err)
+            this.setState({
+                isLoading:false
+            })
+            message.error(err.msg)
         })
     }
 
-    onEvent = (key,params) => {
+    onEvent = (key, params) => {
+    
         switch(key){
             case 'changePage':
                 const { searchValue } = this.state
@@ -72,16 +80,20 @@ class SearchList extends React.Component{
                 
                 break
             case 'contentListSearch':
-                console.log(params)
                 let contentListSearchData = {
                     inputValue:params,
                 }
                 this.setState({
                     isLoading:true
                 },()=>{
+                    this.props.history.replace(`/search-list?inputValue=${params}`)
                     this.reqSearch(contentListSearchData)
                 })
-                
+
+                break
+            case 'jumpDetail':
+                this.props.history.replace(`/list-detail?detailId=${params.id}`)
+                // console.log(params)
                 break
                 default:
                 break
@@ -93,18 +105,27 @@ class SearchList extends React.Component{
         const { searchResult, totalElementCount, filterOptions,isLoading } = this.state
 
         return(
-            <div className="search-list-wrap">
-                <Spin spinning={isLoading} tip="数据加载中，请稍后">
-                    <div className="search-list-header">
-                        <ListHeader onEvent={this.onEvent} />
-                    </div>
-                    <div className="search-list-content">
-                        <TreeList filterOptions={filterOptions} />
-                        <ListContent searchResult={searchResult} totalElementCount={totalElementCount} onEvent={this.onEvent} />
-                    </div>
-                </Spin>
-              
-            </div>
+            <React.Fragment>
+                <div className="search-list-wrap">
+                    <Spin spinning={isLoading} tip="数据加载中，请稍后">
+                        <div className="search-list-header">
+                            <ListHeader onEvent={this.onEvent} />
+                        </div>
+                        <div className="search-list-content">
+                            <TreeList filterOptions={filterOptions} />
+                            <ListContent
+                                searchResult={searchResult}
+                                totalElementCount={totalElementCount}
+                                onEvent={this.onEvent}
+                            />
+                        </div>
+                    </Spin>
+                </div>
+                <div className="home-footer">
+                    <Footer />
+                </div>
+            </React.Fragment>
+         
         )
     }
 }

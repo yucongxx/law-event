@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Avatar, Icon } from 'antd'
+import { List } from 'antd'
 import './index.less'
 
 
@@ -10,7 +10,6 @@ class ListContent extends React.Component {
 
     render() {
         const { searchResult, totalElementCount, onEvent } = this.props
-        console.log(searchResult)
 
         return (
             <div className="list-content-wrap">
@@ -31,10 +30,8 @@ class ListContent extends React.Component {
                             <List.Item
                                 key={index}
                             >
-                                <div className="title">
-                                    <a href={item.href}>
-                                        {item.anJianMingCheng}
-                                    </a>
+                                <div className="title" onClick={() => onEvent('jumpDetail',item)}>
+                                    {item.anJianMingCheng}
                                 </div>
                                 <div className="info">
                                     <span>{item.faYuanMingCheng}</span>

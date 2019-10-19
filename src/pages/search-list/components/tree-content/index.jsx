@@ -14,7 +14,6 @@ class TreeList extends React.Component {
         let dataList = []
 
         for(let key in data){
-            console.log(data[key])
             dataList.push (
                 <TreeNode title={key} className="tree-list-content">
                     {
