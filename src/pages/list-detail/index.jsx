@@ -74,6 +74,10 @@ class ListDetail extends React.Component {
     onEvent = (key, params) => {
         switch(key){
             case 'contentListSearch':
+                if(!params){
+                    message.error('请输入查询内容')
+                    return
+                }
                 this.props.history.push(`/search-list?inputValue=${params}`)
                 break
                 default:

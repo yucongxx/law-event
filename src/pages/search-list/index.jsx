@@ -84,6 +84,10 @@ class SearchList extends React.Component{
                 
                 break
             case 'contentListSearch':
+                if(!params){
+                    message.error('请输入查询内容')
+                    return
+                }
                 let contentListSearchData = {
                     inputValue:params,
                 }
