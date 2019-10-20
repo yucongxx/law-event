@@ -73,7 +73,11 @@ class ListDetail extends React.Component {
 
     onEvent = (key, params) => {
         switch(key){
-
+            case 'contentListSearch':
+                this.props.history.push(`/search-list?inputValue=${params}`)
+                break
+                default:
+                break
         }
     }
 

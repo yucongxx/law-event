@@ -96,7 +96,7 @@ class SearchList extends React.Component{
 
                 break
             case 'jumpDetail':
-                this.props.history.replace(`/list-detail?detailId=${params.id}`)
+                this.props.history.push(`/list-detail?detailId=${params.id}`)
                 // console.log(params)
                 break
                 default:

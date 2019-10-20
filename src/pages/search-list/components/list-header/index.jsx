@@ -1,11 +1,13 @@
 import React from 'react';
 import { Select, Input } from 'antd';
 import headLogo from '../../../common/assets/img/logo.png'
+import { withRouter } from 'react-router'
 import './index.less'
 
 const { Option } = Select;
 const { Search } = Input;
 
+@withRouter
 class ListHeader extends React.Component{
     constructor(props){
         super(props)
@@ -19,13 +21,16 @@ class ListHeader extends React.Component{
         onEvent('contentListSearch',value)
     }
 
+    goHome = () => {
+        this.props.history.push('/')
+    }
+
     render(){
-        
         // console.log(this.props)
         return(
             <div className="list-header">
                 <div className="header-logo">
-                    <a href="javascript:void(0)">
+                    <a href="" onClick={this.goHome}>
                         <img src={headLogo}></img>
                     </a>
                 </div>
