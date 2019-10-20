@@ -40,7 +40,14 @@ class SearchList extends React.Component{
         }
         searchQuery(postData).then(res => {
             if(!isEmpty(res.data)){
-                const { data } = res.data
+                const { data, code, msg } = res.data
+                if(code === 500) {
+                    this.setState({
+                        isLoading:false
+                    })
+                    message.error(msg)
+                    return
+                }
                 const searchResult = data && !isEmpty(data.searchResultPage) && data.searchResultPage.elements
                 const totalElementCount = data && !isEmpty(data.searchResultPage) && data.searchResultPage.totalElementCount
                 const filterOptions = data && !isEmpty(data.filterOptions) && data.filterOptions
@@ -56,10 +63,7 @@ class SearchList extends React.Component{
             }
         }).catch(err => {
             console.log('报错提示', err)
-            this.setState({
-                isLoading:false
-            })
-            message.error(err.msg)
+           
         })
     }
 

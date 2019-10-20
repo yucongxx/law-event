@@ -21,7 +21,7 @@ class ListContent extends React.Component {
                             onChange: page => {
                                 onEvent('changePage',page)
                             },
-                            pageSize: 5,
+                            pageSize: 10,
                             total:totalElementCount
                         }}
                         bordered
