@@ -16,7 +16,9 @@ class ListDetail extends React.Component {
             detailId:'',
             isLoading:true,
             resultData:{},
-            caseData:{}
+            caseData:{},
+            caseTitle:'',
+            keyWords:''
         }
     }
 
@@ -36,6 +38,7 @@ class ListDetail extends React.Component {
             
         }
         searchQueryDetail(postData).then(res => {
+            console.log(res)
             
             if(!isEmpty(res.data)){
                 const { data, code, msg } = res.data
@@ -49,11 +52,13 @@ class ListDetail extends React.Component {
                 }
                 // console.log(data)
                 if(data){
-                    const caseData = data && data.anJian
+                    const title = data && data['基本信息'].案件名称
+                    const keyWords = data && data['基本信息'].关键词
     
                     this.setState({
                         resultData:data,
-                        caseData,
+                        caseTitle:title,
+                        keyWords,
                         isLoading:false
                     })
                 }
@@ -86,7 +91,7 @@ class ListDetail extends React.Component {
     }
 
     render() {
-        const { resultData, isLoading, caseData } = this.state
+        const { resultData, isLoading, caseTitle, keyWords } = this.state
 
         return (
             <React.Fragment>
@@ -98,7 +103,8 @@ class ListDetail extends React.Component {
                         <div className="search-list-content">
                             <DetailContent
                                 resultData={resultData}
-                                caseData={caseData}
+                                caseTitle={caseTitle}
+                                keyWords={keyWords}
                                 // totalElementCount={totalElementCount}
                                 onEvent={this.onEvent}
                             />
