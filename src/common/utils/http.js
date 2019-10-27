@@ -9,3 +9,8 @@ export function searchQuery(data){
 export function searchQueryDetail(data){
     return axios.get(`/api/caipanwenshu/${data.detailId}`)
 }
+
+// 请求图表接口
+export function getEchartsList(value){
+    return axios.get(`/api/search/charts?query=${value}`)
+}

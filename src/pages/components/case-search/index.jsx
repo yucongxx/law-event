@@ -26,6 +26,16 @@ class CaseSearch extends React.Component {
         // searchQuery(inputValue)
     }
 
+    chartAnalyze = () => {
+        let { inputValue } = this.state
+        if(!inputValue) {
+            message.error('请输入查询内容')
+            return
+        }
+        this.props.history.push(`/chart-list?inputValue=${inputValue}`)
+        
+    }
+
     changeValue = (inputValue) => {
         this.setState({
             inputValue: inputValue.target.value
@@ -52,7 +62,7 @@ class CaseSearch extends React.Component {
                     <Button
                         type="primary"
                         className="case-search-submit"
-                        onClick={this.searchCase}
+                        onClick={this.chartAnalyze}
                     >图表分析</Button>
                 </div>
                 <div className="search-bottom-content">
