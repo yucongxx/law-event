@@ -131,11 +131,11 @@ class EchartsContent extends React.Component {
 
         switch (data.title) {
             case "anLiAnJianLeiXing":
-            case "案件类型":
+            case "案例案件类型":
             case "anLiSheJiFaYuanCengJi":
-            case "案例涉及法院层级分布":
+            case "案例涉及法院层级":
             case "anLiShenPanChengXu":
-            case "案例涉及审判程序分布":
+            case "案例审判程序":
             
             this.circleChartOptions = cloneDeep(this.circleChartOptions)
 
