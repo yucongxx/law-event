@@ -84,6 +84,7 @@ class EchartsContent extends React.Component {
         super(props)
         this.circleChartOptions = circleChartOption
         this.clomnChartOptions = clomnChartOption
+        this.timer = null
         this.state = {
             searchValue: '',
             echartsData: []
@@ -93,12 +94,25 @@ class EchartsContent extends React.Component {
     componentDidMount() {
         let { location: { search } } = this.props
         const parseObj = queryString.parse(search)
+        let isLogin  = localStorage.getItem('loginInfo')
+
+        if(!isLogin){
+            message.error('请先登录')
+            this.timer = setTimeout(()=> {
+                window.location.href = 'http://www.goingai.com/api/oauth2/authorization/weixin'
+            },2000)
+            return 
+        }
 
         this.setState({
             searchValue: parseObj.inputValue
         })
 
         this.getEchartsData(parseObj)
+    }
+
+    componentWillUnmount(){
+        clearTimeout(this.timer)
     }
 
     getEchartsData = (parseObj) => {
@@ -182,7 +196,7 @@ class EchartsContent extends React.Component {
                 {
                     !isEmpty(echartsData) && echartsData.map((item,index) => {
                         return (
-                            <div className="echarts-item">
+                            <div className="echarts-item" key={index}>
                                 <ReactEcharts
                                     option={this.getOption(item,index)}
                                     notMerge={true}

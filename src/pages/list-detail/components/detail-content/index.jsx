@@ -19,10 +19,9 @@ class DetailContent extends React.Component {
             })
         }
 
-        return baseArr && baseArr.map(item => {
-            console.log(item)
+        return baseArr && baseArr.map((item,index) => {
             return (
-                <div className="info-title-content">
+                <div className="info-title-content" key={index}>
                     <div className="content-clomn">
                         <div className="info-title-left">{item.key}: </div>
                         <div className="info-title-right">{item.content}</div>
@@ -44,39 +43,18 @@ class DetailContent extends React.Component {
             })
         }
 
-        return baseArr && baseArr.map(item => {
+        return baseArr && baseArr.map((item,index) => {
 
             return (
-                <React.Fragment>
+                <React.Fragment key={index}>
                     <div className="content-title">{item.key}</div>
                     <div className="content-suggest">
-                        {item.content}
+                        {item.content.join('\n')}
                     </div>
                    
                 </React.Fragment>
             )
         })
-
-        // return (
-        //     <React.Fragment>
-        //         <div className="content-title">本院认为</div>
-        //         <div className="content-suggest">
-        //             {resultData.liYou}
-        //         </div>
-        //         <div className="content-title">审判结果</div>
-        //         <div className="content-suggest">
-        //             {resultData.panJueJieGuo}
-        //         </div>
-        //         <div className="content-title">审判人员</div>
-        //         <div className="content-suggest">
-        //             {resultData.shenPanRenYuan}
-        //         </div>
-        //         <div className="content-title">书记员</div>
-        //         <div className="content-suggest">
-        //             {resultData.shuJiYuan}
-        //         </div>
-        //     </React.Fragment>
-        // )
     }
 
     render() {

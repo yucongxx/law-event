@@ -1,13 +1,43 @@
 import React from 'react';
-import {Icon} from 'antd';
+import {Icon, Avatar} from 'antd';
+import { withRouter } from 'react-router'
+import { getLoginInfo } from '../../../../common/utils/http'
 import './index.less'
 
 const imgSrc = {
     logo:require('../../../common/assets/img/logo.png')
 }
 
+@withRouter
 class Header extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            isLogin:false,
+            userName:''
+        }
+    }
+
+    componentDidMount(){
+        getLoginInfo().then(res=> {
+            console.log('res',res)
+            if(res.data){
+                this.setState({
+                    isLogin:true,
+                    userName:res.data.name
+                })
+                localStorage.setItem('loginInfo',true)
+            }
+        })
+    }
+
+    login = () => {
+        window.location.href = 'http://www.goingai.com/api/oauth2/authorization/weixin'
+    }
+
     render(){
+        const { isLogin, userName } = this.state
+        console.log(userName)
         return (
             <div className="header">
                 <div className="header-left">
@@ -25,8 +55,19 @@ class Header extends React.Component{
                     </div>
                 </div>
                 <div className="header-right">
-                    <div className="login-btn">登录</div>
-                    <div className="register-btn">注册</div>
+                    {
+                        !isLogin ?
+                        <div 
+                            className="login-btn"
+                            onClick={this.login}
+                        >登录</div>
+                        :
+                       <div className="logined-status">
+                            <span>{userName}</span>
+                            <Avatar icon="user" />
+                       </div>
+                    }
+                    {/* <div className="register-btn">注册</div> */}
                 </div>
             </div>
         )

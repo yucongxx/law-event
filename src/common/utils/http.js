@@ -14,3 +14,8 @@ export function searchQueryDetail(data){
 export function getEchartsList(value){
     return axios.get(`/api/search/charts?query=${value}`)
 }
+
+// 请求是否登录接口
+export function getLoginInfo(){
+    return axios.get(`/api/user`)
+}

@@ -20,7 +20,7 @@ class TreeList extends React.Component {
                         !isEmpty(data[key]) && data[key].map((item, index) => {
 
                             return (
-                                <TreeNode title={item}></TreeNode>
+                                <TreeNode title={item} key={index}></TreeNode>
                             )
                         })
                     }

@@ -30,7 +30,7 @@ class FaRecommend extends React.Component{
 
         return data.map((item,index) => {
             return (
-                <div className="recommend-case">
+                <div className="recommend-case" key={index}>
                     <div className="case-left">
                         <p className="case-title">
                             <a href="">原告泉州海日星工艺美术有限公司诉被告中荷（上海）货运代理有限公司厦门分公司海上货运代理...</a>

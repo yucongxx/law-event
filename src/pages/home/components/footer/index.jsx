@@ -33,7 +33,7 @@ class Footer extends React.Component{
 
         return data.map((item,index) => {
             return (
-                <div className="list">
+                <div className="list" key={index}>
                     <div className="title">公司介绍</div>
                     <div className="link">
                         <a href="">关于案读</a>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Select, Input } from 'antd';
+import { Select, Input, Avatar } from 'antd';
 import headLogo from '../../../common/assets/img/logo.png'
+import { getLoginInfo } from '../../../../common/utils/http'
 import { withRouter } from 'react-router'
 import './index.less'
 
@@ -12,8 +13,16 @@ class ListHeader extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            inputValue:''
+            inputValue:'',
+            isLogin:false
         }
+    }
+
+    componentDidMount(){
+        console.log(1)
+        getLoginInfo().then(res=> {
+            console.log(res)
+        })
     }
 
     contentSearch = (value) => {
@@ -25,8 +34,12 @@ class ListHeader extends React.Component{
         this.props.history.push('/')
     }
 
+    login = () => {
+        window.location.href = 'http://www.goingai.com/api/oauth2/authorization/weixin'
+    }
+
     render(){
-        // console.log(this.props)
+        const { isLogin } = this.state
         return(
             <div className="list-header">
                 <div className="header-logo">
@@ -49,8 +62,23 @@ class ListHeader extends React.Component{
                     />
                 </div>
                 <div className="header-right">
-                    <div className="login-btn">登录</div>
-                    <div className="register-btn">注册</div>
+                    {/* <div 
+                        className="login-btn"
+                        onClick={this.login}
+                    >登录</div> */}
+                    {
+                        !isLogin ?
+                        <div 
+                            className="login-btn"
+                            onClick={this.login}
+                        >登录</div>
+                        :
+                       <div className="logined-status">
+                            <span>案读</span>
+                            <Avatar icon="user" />
+                       </div>
+                    }
+                    {/* <div className="register-btn">注册</div> */}
                 </div>
             </div>
         )

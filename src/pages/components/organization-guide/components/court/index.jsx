@@ -41,7 +41,7 @@ class Court extends React.Component {
     getCourtListContent = (data) => {
         return data.map((item, index) => {
             return (
-                <div className="court-list-content">
+                <div className="court-list-content" key={index}>
                     <div className="list-title">
                         最高人民法院
                     </div>

@@ -12,6 +12,7 @@ import './index.less'
 class ListDetail extends React.Component {
     constructor(props){
         super(props)
+        this.timer = null
         this.state = {
             detailId:'',
             isLoading:true,
@@ -25,11 +26,24 @@ class ListDetail extends React.Component {
     componentDidMount(){
         let { location:{ search } } = this.props
         const parseObj = queryString.parse(search)
+        let isLogin  = localStorage.getItem('loginInfo')
+
+        if(!isLogin){
+            message.error('请先登录')
+            this.timer = setTimeout(()=> {
+                window.location.href = 'http://www.goingai.com/api/oauth2/authorization/weixin'
+            },2000)
+            return 
+        }
         this.setState({
             detailId: parseObj.detailId
         })
 
         this.reqSearch(parseObj)
+    }
+
+    componentWillUnmount(){
+        clearTimeout(this.timer)
     }
 
     reqSearch = (data) => {
@@ -38,7 +52,6 @@ class ListDetail extends React.Component {
             
         }
         searchQueryDetail(postData).then(res => {
-            console.log(res)
             
             if(!isEmpty(res.data)){
                 const { data, code, msg } = res.data
