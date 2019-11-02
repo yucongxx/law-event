@@ -24,7 +24,7 @@ class ListHeader extends React.Component{
             if(res.data.data){
                 this.setState({
                     isLogin:true,
-                    userName:res.data.data.name
+                    userName:res.data.data.nickname
                 })
                 localStorage.setItem('loginInfo',true)
             }
