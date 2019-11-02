@@ -21,10 +21,10 @@ class Header extends React.Component{
     componentDidMount(){
         getLoginInfo().then(res=> {
             console.log('res',res)
-            if(res.data){
+            if(res.data.data){
                 this.setState({
                     isLogin:true,
-                    userName:res.data.name
+                    userName:res.data.data.name
                 })
                 localStorage.setItem('loginInfo',true)
             }

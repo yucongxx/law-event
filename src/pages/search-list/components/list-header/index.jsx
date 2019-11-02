@@ -19,9 +19,15 @@ class ListHeader extends React.Component{
     }
 
     componentDidMount(){
-        console.log(1)
         getLoginInfo().then(res=> {
-            console.log(res)
+            console.log('res',res)
+            if(res.data.data){
+                this.setState({
+                    isLogin:true,
+                    userName:res.data.data.name
+                })
+                localStorage.setItem('loginInfo',true)
+            }
         })
     }
 

@@ -32,7 +32,7 @@ class ListDetail extends React.Component {
             message.error('请先登录')
             this.timer = setTimeout(()=> {
                 window.location.href = 'http://www.goingai.com/api/oauth2/authorization/weixin'
-            },2000)
+            },1000)
             return 
         }
         this.setState({
