@@ -1,6 +1,7 @@
 import React from 'react';
 import { Select, Input, Avatar } from 'antd';
 import headLogo from '../../../common/assets/img/logo.png'
+import queryString from 'query-string'
 import { getLoginInfo } from '../../../../common/utils/http'
 import { withRouter } from 'react-router'
 import './index.less'
@@ -20,6 +21,12 @@ class ListHeader extends React.Component{
     }
 
     componentDidMount(){
+        let { location:{ search } } = this.props
+        const parseObj = queryString.parse(search)
+        this.setState({
+            inputValue:parseObj.inputValue
+        })
+
         getLoginInfo().then(res=> {
             console.log('res',res)
             if(res.data.data){
@@ -45,8 +52,16 @@ class ListHeader extends React.Component{
         window.location.href = 'http://www.goingai.com/api/oauth2/authorization/weixin'
     }
 
+    changeValue = (e) =>{
+        console.log(e)
+        this.setState({
+            inputValue:e.target.value
+        })
+    }
+
     render(){
-        const { isLogin, userName } = this.state
+        const { isLogin, userName, inputValue } = this.state
+        const { searchValue } = this.props
         return(
             <div className="list-header">
                 <div className="header-logo">
@@ -57,15 +72,17 @@ class ListHeader extends React.Component{
                 <div className="header-search">
                     <Select defaultValue="1" style={{ width: 120 }}>
                         <Option value="1">案例</Option>
-                        <Option value="2">律师</Option>
+                        {/* <Option value="2">律师</Option>
                         <Option value="3">法规</Option>
                         <Option value="4">知识</Option>
-                        <Option value="5">请教</Option>
+                        <Option value="5">请教</Option> */}
                     </Select>
                     <Search
                         placeholder="请搜索输入内容"
                         enterButton="搜索"
                         onSearch={(value) =>this.contentSearch(value)}
+                        value={inputValue}
+                        onChange={this.changeValue}
                     />
                 </div>
                 <div className="header-right">
