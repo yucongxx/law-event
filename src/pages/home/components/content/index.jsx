@@ -69,10 +69,10 @@ class Content extends React.Component{
                     <div className="watch-case">看案例</div>
                     <WatchCase />
                 </div>
-                <div className="third-content">
+                {/* <div className="third-content">
                     <div className="organization-guide">机构指南</div>
                     <OrganizationGuide />
-                </div>
+                </div> */}
             </div>
         )
     }

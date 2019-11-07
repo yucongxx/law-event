@@ -67,7 +67,7 @@ class CaseSearch extends React.Component {
                 </div>
                 <div className="search-bottom-content">
                     <span>已收录案例 75656730 篇，今日新增 89223 篇。</span>
-                    <a href="">点我检索「天同码」，首次使用免费</a>
+                    {/* <a href="">点我检索「天同码」，首次使用免费</a> */}
                 </div>
             </React.Fragment>
 

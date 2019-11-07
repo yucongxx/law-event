@@ -49,7 +49,7 @@ class DetailContent extends React.Component {
                 <React.Fragment key={index}>
                     <div className="content-title">{item.key}</div>
                     <div className="content-suggest">
-                        {item.content.join('\n')}
+                    &nbsp;&nbsp;{item.content.join('\n')}
                     </div>
                    
                 </React.Fragment>

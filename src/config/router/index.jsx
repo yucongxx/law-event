@@ -11,7 +11,7 @@ function render() {
             <Route exact path='/' component={Home}></Route>
             <Route exact path='/search-list' component={SearchLsit}></Route>
             <Route exact path='/list-detail' component={ListDetail}></Route>
-            <Route exact path='/chart-list' component={ChartAnalyzeList}></Route>
+            <Route exact path='/chart-list' component={ChartAnalyzeList}></Route> 
         </React.Fragment>
      
        

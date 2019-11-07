@@ -14,7 +14,8 @@ class ListHeader extends React.Component{
         super(props)
         this.state = {
             inputValue:'',
-            isLogin:false
+            isLogin:false,
+            userName:''
         }
     }
 
@@ -45,7 +46,7 @@ class ListHeader extends React.Component{
     }
 
     render(){
-        const { isLogin } = this.state
+        const { isLogin, userName } = this.state
         return(
             <div className="list-header">
                 <div className="header-logo">
@@ -80,7 +81,7 @@ class ListHeader extends React.Component{
                         >登录</div>
                         :
                        <div className="logined-status">
-                            <span>案读</span>
+                            <span>{userName}</span>
                             <Avatar icon="user" />
                        </div>
                     }
