@@ -53,6 +53,7 @@ class CaseSearch extends React.Component {
                         className="case-search-input"
                         value={inputValue}
                         onChange={this.changeValue}
+                        onPressEnter={this.searchCase}
                     />
                     <Button
                         type="primary"

@@ -26,6 +26,16 @@ class ListDetail extends React.Component {
     componentDidMount(){
         let { location:{ search } } = this.props
         const parseObj = queryString.parse(search)
+
+        this.loginCheck(parseObj)
+        this.reqSearch(parseObj)
+    }
+
+    componentWillUnmount(){
+        clearTimeout(this.timer)
+    }
+
+    loginCheck = (parseObj) => {
         let isLogin  = localStorage.getItem('loginInfo')
 
         if(!isLogin){
@@ -39,11 +49,6 @@ class ListDetail extends React.Component {
             detailId: parseObj.detailId
         })
 
-        this.reqSearch(parseObj)
-    }
-
-    componentWillUnmount(){
-        clearTimeout(this.timer)
     }
 
     reqSearch = (data) => {

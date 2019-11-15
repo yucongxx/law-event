@@ -1,5 +1,6 @@
 import React from 'react'
 // import { List } from 'antd'
+import isEmpty from 'lodash/isEmpty'
 import './index.less'
 
 
@@ -20,11 +21,14 @@ class DetailContent extends React.Component {
         }
 
         return baseArr && baseArr.map((item,index) => {
+
+            let content = Array.isArray(item.content) ? !isEmpty(item.content) && item.content.join('，') : item.content
+        
             return (
                 <div className="info-title-content" key={index}>
                     <div className="content-clomn">
                         <div className="info-title-left">{item.key}: </div>
-                        <div className="info-title-right">{item.content}</div>
+                        <div className="info-title-right">{content}</div>
                     </div>
                 </div>
             )
@@ -48,10 +52,9 @@ class DetailContent extends React.Component {
             return (
                 <React.Fragment key={index}>
                     <div className="content-title">{item.key}</div>
-                    <div className="content-suggest">
-                    {item.content.join('\n')}
+                    <div className={item.key==='尾部信息'?"content-suggest-no-indent content-suggest":"content-suggest"}>
+                        {item.content.join('\n')}
                     </div>
-                   
                 </React.Fragment>
             )
         })
@@ -67,7 +70,7 @@ class DetailContent extends React.Component {
                         <div className="detail-title">
                             <h4>{caseTitle}</h4>
                         </div>
-                        <div className="detail-des">
+                        {/* <div className="detail-des">
                             <div className="des-left">
                                 <div>【关键词】</div>
                                 <div>【文书来源】</div>
@@ -76,7 +79,7 @@ class DetailContent extends React.Component {
                                 <div>{keyWords ? keyWords.join(' / ') : '-'}</div>
                                 <div>中国裁判文书网</div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="basic-info">
                             <div className="info-title">基本信息</div>
                                 {

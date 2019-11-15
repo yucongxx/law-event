@@ -12,18 +12,19 @@ class Footer extends React.Component{
             rightList:[
                 {
                     key:'1',
+                    name:'公司介绍'
                 },
                 {
                     key:'2',
-                  
+                    name:'关于案读'
                 },
                 {
                     key:'3',
-                  
+                    name:'媒体报道'
                 },
                 {
                     key:'4',
-                  
+                    name:'工作机会'
                 },
             ]
         }
@@ -34,8 +35,8 @@ class Footer extends React.Component{
         return data.map((item,index) => {
             return (
                 <div className="list" key={index}>
-                    <div className="title">公司介绍</div>
-                    <div className="link">
+                    <div className="title">{item.name}</div>
+                    {/* <div className="link">
                         <a href="">关于案读</a>
                     </div>
                     <div className="link">
@@ -43,7 +44,7 @@ class Footer extends React.Component{
                     </div>
                     <div className="link">
                         <a href="">工作机会</a>
-                    </div>
+                    </div> */}
                 </div>
             )
         })

@@ -94,6 +94,16 @@ class EchartsContent extends React.Component {
     componentDidMount() {
         let { location: { search } } = this.props
         const parseObj = queryString.parse(search)
+
+        // this.loginCheck(parseObj)
+        this.getEchartsData(parseObj)
+    }
+
+    componentWillUnmount(){
+        clearTimeout(this.timer)
+    }
+
+    loginCheck = (parseObj) =>{
         let isLogin  = localStorage.getItem('loginInfo')
 
         if(!isLogin){
@@ -107,12 +117,6 @@ class EchartsContent extends React.Component {
         this.setState({
             searchValue: parseObj.inputValue
         })
-
-        this.getEchartsData(parseObj)
-    }
-
-    componentWillUnmount(){
-        clearTimeout(this.timer)
     }
 
     getEchartsData = (parseObj) => {
