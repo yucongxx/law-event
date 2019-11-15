@@ -13,22 +13,22 @@ const tabList = [
         name:'案例',
         children:props => <CaseSearch {...props}/>
     },
-    {
-        key:'2',
-        name:'法规'
-    },
-    {
-        key:'3',
-        name:'律师'
-    },
-    {
-        key:'4',
-        name:'知识'
-    },
-    {
-        key:'5',
-        name:'请教'
-    }
+    // {
+    //     key:'2',
+    //     name:'法规'
+    // },
+    // {
+    //     key:'3',
+    //     name:'律师'
+    // },
+    // {
+    //     key:'4',
+    //     name:'知识'
+    // },
+    // {
+    //     key:'5',
+    //     name:'请教'
+    // }
 ]
 
 class Content extends React.Component{

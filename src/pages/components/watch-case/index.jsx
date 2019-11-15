@@ -8,7 +8,7 @@ const { TabPane } = Tabs;
 const tabCaseList = [
     {
         key:'1',
-        name:'viewcount最多的案例',
+        name:'案例推荐',
         children:props => <FaRecommend {...props}/>
     },
     {

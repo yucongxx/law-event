@@ -44,7 +44,7 @@ class Header extends React.Component{
                     <div className="logo">
                         <img src={imgSrc.logo} alt="" />
                     </div>
-                    <div className="location">
+                    {/* <div className="location">
                         <Icon type="environment" theme="filled"/>
                         <span>北京</span>
                     </div>
@@ -52,7 +52,7 @@ class Header extends React.Component{
                         <a href="" target="_blank">企业服务</a>
                         <a href="" target="_blank">异地查档</a>
                         <a href="" target="_blank">案例APP</a>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="header-right">
                     {
