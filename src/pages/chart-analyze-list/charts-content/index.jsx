@@ -95,7 +95,7 @@ class EchartsContent extends React.Component {
         let { location: { search } } = this.props
         const parseObj = queryString.parse(search)
 
-        // this.loginCheck(parseObj)
+        this.loginCheck(parseObj)
         this.getEchartsData(parseObj)
     }
 
